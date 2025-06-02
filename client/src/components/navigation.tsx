@@ -27,7 +27,7 @@ export default function Navigation() {
           
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+            <div className="ml-10 flex items-baseline space-x-6">
               <button 
                 onClick={() => scrollToSection('features')}
                 className="hover:text-sky-500 transition-colors duration-300"
@@ -35,22 +35,28 @@ export default function Navigation() {
                 Features
               </button>
               <button 
-                onClick={() => scrollToSection('architecture')}
+                onClick={() => scrollToSection('demos')}
                 className="hover:text-sky-500 transition-colors duration-300"
               >
-                Architecture
+                Demos
               </button>
               <button 
-                onClick={() => scrollToSection('security')}
+                onClick={() => scrollToSection('portal')}
                 className="hover:text-sky-500 transition-colors duration-300"
               >
-                Security
+                Portal
+              </button>
+              <button 
+                onClick={() => scrollToSection('docs')}
+                className="hover:text-sky-500 transition-colors duration-300"
+              >
+                Docs
               </button>
               <button 
                 onClick={() => scrollToSection('demo')}
                 className="hover:text-sky-500 transition-colors duration-300"
               >
-                Demo
+                Contact
               </button>
             </div>
           </div>
@@ -90,22 +96,28 @@ export default function Navigation() {
               Features
             </button>
             <button
-              onClick={() => scrollToSection('architecture')}
+              onClick={() => scrollToSection('demos')}
               className="block px-3 py-2 text-slate-300 hover:text-sky-500 transition-colors duration-300"
             >
-              Architecture
+              Demos
             </button>
             <button
-              onClick={() => scrollToSection('security')}
+              onClick={() => scrollToSection('portal')}
               className="block px-3 py-2 text-slate-300 hover:text-sky-500 transition-colors duration-300"
             >
-              Security
+              Portal
+            </button>
+            <button
+              onClick={() => scrollToSection('docs')}
+              className="block px-3 py-2 text-slate-300 hover:text-sky-500 transition-colors duration-300"
+            >
+              Docs
             </button>
             <button
               onClick={() => scrollToSection('demo')}
               className="block px-3 py-2 text-slate-300 hover:text-sky-500 transition-colors duration-300"
             >
-              Demo
+              Contact
             </button>
             <div className="px-3 py-2">
               <Button 
