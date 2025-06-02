@@ -1,25 +1,26 @@
 import { motion } from "framer-motion";
 import { Zap, Shield, Database } from "lucide-react";
+import { SystemArchitectureGraphic, NetworkTopologyGraphic, DataFlowGraphic, MCPServerGraphic } from "./security-graphics";
 
 const architectureNodes = [
   {
     title: "Cloud Environment",
     description: "AWS, Azure, GCP monitoring with autonomous threat detection",
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&h=200",
+    graphic: SystemArchitectureGraphic,
     gradient: "from-sky-500/20 to-cyan-500/20",
     borderColor: "border-sky-500/30 hover:border-sky-500/60"
   },
   {
     title: "MCP Control Center",
     description: "Centralized management, policy distribution, and logging",
-    image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200",
+    graphic: MCPServerGraphic,
     gradient: "from-cyan-500/20 to-teal-500/20",
     borderColor: "border-cyan-500/30 hover:border-cyan-500/60"
   },
   {
     title: "On-Premises",
     description: "Private data center protection with hybrid deployment",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&h=200",
+    graphic: DataFlowGraphic,
     gradient: "from-teal-500/20 to-purple-500/20",
     borderColor: "border-teal-500/30 hover:border-teal-500/60"
   }
@@ -86,11 +87,9 @@ export default function ArchitectureSection() {
                 viewport={{ once: true }}
               >
                 <h3 className="text-lg font-semibold text-sky-500 mb-2">{node.title}</h3>
-                <img
-                  src={node.image}
-                  alt={node.description}
-                  className="rounded-lg mb-3 w-full h-32 object-cover"
-                />
+                <div className="bg-slate-900/50 rounded-lg mb-3 w-full h-32 border border-slate-700">
+                  <node.graphic />
+                </div>
                 <p className="text-sm text-slate-300">{node.description}</p>
               </motion.div>
             ))}

@@ -293,6 +293,289 @@ export const RedTeamGraphic = () => (
   </svg>
 );
 
+export const SystemArchitectureGraphic = () => (
+  <svg viewBox="0 0 400 300" className="w-full h-full">
+    <defs>
+      <linearGradient id="archGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#0ea5e9" />
+        <stop offset="100%" stopColor="#06b6d4" />
+      </linearGradient>
+      <filter id="techGlow">
+        <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+        <feMerge> 
+          <feMergeNode in="coloredBlur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+    </defs>
+    
+    {/* Cloud Infrastructure */}
+    <g transform="translate(200,60)">
+      <ellipse rx="80" ry="25" fill="url(#archGradient)" opacity="0.2"/>
+      <ellipse rx="70" ry="20" fill="none" stroke="#0ea5e9" strokeWidth="2" strokeDasharray="5,5"/>
+      <text textAnchor="middle" y="5" fill="#e2e8f0" fontSize="12" fontWeight="bold">Cloud Infrastructure</text>
+    </g>
+    
+    {/* Edge Computing Nodes */}
+    <g>
+      <g transform="translate(80,150)">
+        <rect x="-15" y="-15" width="30" height="30" fill="#0f172a" stroke="#0ea5e9" strokeWidth="2" rx="5"/>
+        <circle cx="0" cy="0" r="8" fill="#0ea5e9" opacity="0.3"/>
+        <text textAnchor="middle" y="3" fill="#0ea5e9" fontSize="8" fontWeight="bold">EDGE</text>
+        <text textAnchor="middle" y="35" fill="#e2e8f0" fontSize="9">Edge Node 1</text>
+      </g>
+      
+      <g transform="translate(320,150)">
+        <rect x="-15" y="-15" width="30" height="30" fill="#0f172a" stroke="#06b6d4" strokeWidth="2" rx="5"/>
+        <circle cx="0" cy="0" r="8" fill="#06b6d4" opacity="0.3"/>
+        <text textAnchor="middle" y="3" fill="#06b6d4" fontSize="8" fontWeight="bold">EDGE</text>
+        <text textAnchor="middle" y="35" fill="#e2e8f0" fontSize="9">Edge Node 2</text>
+      </g>
+    </g>
+    
+    {/* Core Processing Units */}
+    <g transform="translate(200,180)">
+      <rect x="-40" y="-20" width="80" height="40" fill="#1e293b" stroke="#7c3aed" strokeWidth="2" rx="8"/>
+      <rect x="-35" y="-15" width="70" height="30" fill="#0f172a" rx="5"/>
+      
+      {/* Processing Cores */}
+      <circle cx="-20" cy="-5" r="6" fill="#7c3aed" opacity="0.7"/>
+      <circle cx="0" cy="-5" r="6" fill="#a855f7" opacity="0.7"/>
+      <circle cx="20" cy="-5" r="6" fill="#7c3aed" opacity="0.7"/>
+      
+      <text textAnchor="middle" y="15" fill="#e2e8f0" fontSize="8">Core Processing</text>
+      <text textAnchor="middle" y="40" fill="#e2e8f0" fontSize="9">AI Engine Cluster</text>
+    </g>
+    
+    {/* Data Flow Networks */}
+    <g>
+      <path d="M95,150 Q150,115 200,150" fill="none" stroke="#0ea5e9" strokeWidth="2" opacity="0.7" strokeDasharray="3,3">
+        <animate attributeName="stroke-dashoffset" values="0;-15" dur="2s" repeatCount="indefinite"/>
+      </path>
+      <path d="M305,150 Q250,115 200,150" fill="none" stroke="#06b6d4" strokeWidth="2" opacity="0.7" strokeDasharray="3,3">
+        <animate attributeName="stroke-dashoffset" values="0;-15" dur="2.5s" repeatCount="indefinite"/>
+      </path>
+      
+      {/* Uplink to Cloud */}
+      <path d="M200,160 L200,85" fill="none" stroke="#7c3aed" strokeWidth="2" opacity="0.7" strokeDasharray="5,5">
+        <animate attributeName="stroke-dashoffset" values="0;-20" dur="3s" repeatCount="indefinite"/>
+      </path>
+    </g>
+    
+    {/* Security Perimeter */}
+    <g className="animate-pulse" style={{animationDuration: '4s'}}>
+      <rect x="40" y="120" width="320" height="120" fill="none" stroke="#ef4444" strokeWidth="1" strokeDasharray="2,2" rx="10" opacity="0.5"/>
+      <text x="50" y="135" fill="#ef4444" fontSize="8">Security Perimeter</text>
+    </g>
+    
+    {/* Monitoring Sensors */}
+    <g>
+      <circle cx="60" cy="240" r="4" fill="#10b981" className="animate-pulse"/>
+      <circle cx="120" cy="240" r="4" fill="#f59e0b" className="animate-pulse" style={{animationDelay: '0.5s'}}/>
+      <circle cx="280" cy="240" r="4" fill="#10b981" className="animate-pulse" style={{animationDelay: '1s'}}/>
+      <circle cx="340" cy="240" r="4" fill="#0ea5e9" className="animate-pulse" style={{animationDelay: '1.5s'}}/>
+      
+      <text x="200" y="260" textAnchor="middle" fill="#94a3b8" fontSize="9">Distributed Monitoring Grid</text>
+    </g>
+  </svg>
+);
+
+export const NetworkTopologyGraphic = () => (
+  <svg viewBox="0 0 400 300" className="w-full h-full">
+    <defs>
+      <linearGradient id="netGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#10b981" />
+        <stop offset="100%" stopColor="#059669" />
+      </linearGradient>
+    </defs>
+    
+    {/* Core Router */}
+    <g transform="translate(200,150)">
+      <rect x="-25" y="-15" width="50" height="30" fill="#1e293b" stroke="#10b981" strokeWidth="2" rx="5"/>
+      <circle cx="0" cy="0" r="10" fill="url(#netGradient)" opacity="0.3"/>
+      <text textAnchor="middle" y="3" fill="#10b981" fontSize="10" fontWeight="bold">CORE</text>
+      <text textAnchor="middle" y="35" fill="#e2e8f0" fontSize="9">Core Router</text>
+    </g>
+    
+    {/* Switch Network */}
+    <g>
+      <g transform="translate(100,80)">
+        <rect x="-20" y="-10" width="40" height="20" fill="#0f172a" stroke="#06b6d4" strokeWidth="2" rx="3"/>
+        <text textAnchor="middle" y="3" fill="#06b6d4" fontSize="8">SW1</text>
+        <text textAnchor="middle" y="25" fill="#e2e8f0" fontSize="8">Switch A</text>
+      </g>
+      
+      <g transform="translate(300,80)">
+        <rect x="-20" y="-10" width="40" height="20" fill="#0f172a" stroke="#06b6d4" strokeWidth="2" rx="3"/>
+        <text textAnchor="middle" y="3" fill="#06b6d4" fontSize="8">SW2</text>
+        <text textAnchor="middle" y="25" fill="#e2e8f0" fontSize="8">Switch B</text>
+      </g>
+      
+      <g transform="translate(100,220)">
+        <rect x="-20" y="-10" width="40" height="20" fill="#0f172a" stroke="#06b6d4" strokeWidth="2" rx="3"/>
+        <text textAnchor="middle" y="3" fill="#06b6d4" fontSize="8">SW3</text>
+        <text textAnchor="middle" y="25" fill="#e2e8f0" fontSize="8">Switch C</text>
+      </g>
+      
+      <g transform="translate(300,220)">
+        <rect x="-20" y="-10" width="40" height="20" fill="#0f172a" stroke="#06b6d4" strokeWidth="2" rx="3"/>
+        <text textAnchor="middle" y="3" fill="#06b6d4" fontSize="8">SW4</text>
+        <text textAnchor="middle" y="25" fill="#e2e8f0" fontSize="8">Switch D</text>
+      </g>
+    </g>
+    
+    {/* Network Connections */}
+    <g>
+      <line x1="175" y1="135" x2="120" y2="90" stroke="#10b981" strokeWidth="2"/>
+      <line x1="225" y1="135" x2="280" y2="90" stroke="#10b981" strokeWidth="2"/>
+      <line x1="175" y1="165" x2="120" y2="210" stroke="#10b981" strokeWidth="2"/>
+      <line x1="225" y1="165" x2="280" y2="210" stroke="#10b981" strokeWidth="2"/>
+      
+      {/* Cross Connections */}
+      <line x1="120" y1="80" x2="280" y2="80" stroke="#059669" strokeWidth="1" strokeDasharray="3,3"/>
+      <line x1="120" y1="220" x2="280" y2="220" stroke="#059669" strokeWidth="1" strokeDasharray="3,3"/>
+    </g>
+    
+    {/* Endpoint Devices */}
+    <g>
+      <circle cx="50" cy="50" r="8" fill="#f59e0b" opacity="0.7"/>
+      <text x="50" y="40" textAnchor="middle" fill="#e2e8f0" fontSize="7">Device</text>
+      
+      <circle cx="350" cy="50" r="8" fill="#f59e0b" opacity="0.7"/>
+      <text x="350" y="40" textAnchor="middle" fill="#e2e8f0" fontSize="7">Device</text>
+      
+      <circle cx="50" cy="250" r="8" fill="#f59e0b" opacity="0.7"/>
+      <text x="50" y="270" textAnchor="middle" fill="#e2e8f0" fontSize="7">Device</text>
+      
+      <circle cx="350" cy="250" r="8" fill="#f59e0b" opacity="0.7"/>
+      <text x="350" y="270" textAnchor="middle" fill="#e2e8f0" fontSize="7">Device</text>
+    </g>
+    
+    {/* Traffic Flow Animation */}
+    <g className="animate-pulse">
+      <circle cx="140" cy="110" r="3" fill="#0ea5e9"/>
+      <circle cx="260" cy="110" r="3" fill="#0ea5e9"/>
+      <circle cx="140" cy="190" r="3" fill="#0ea5e9"/>
+      <circle cx="260" cy="190" r="3" fill="#0ea5e9"/>
+    </g>
+    
+    {/* Network Stats */}
+    <g transform="translate(50,30)">
+      <rect width="100" height="15" fill="#0f172a" stroke="#374151" rx="3"/>
+      <text x="50" y="10" textAnchor="middle" fill="#10b981" fontSize="8">Throughput: 10Gbps</text>
+    </g>
+  </svg>
+);
+
+export const DataFlowGraphic = () => (
+  <svg viewBox="0 0 400 300" className="w-full h-full">
+    <defs>
+      <linearGradient id="dataGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#f59e0b" />
+        <stop offset="100%" stopColor="#d97706" />
+      </linearGradient>
+    </defs>
+    
+    {/* Data Sources */}
+    <g>
+      <g transform="translate(50,80)">
+        <rect x="-15" y="-10" width="30" height="20" fill="#0f172a" stroke="#f59e0b" strokeWidth="2" rx="3"/>
+        <text textAnchor="middle" y="3" fill="#f59e0b" fontSize="8">DB</text>
+        <text textAnchor="middle" y="25" fill="#e2e8f0" fontSize="8">Database</text>
+      </g>
+      
+      <g transform="translate(50,150)">
+        <rect x="-15" y="-10" width="30" height="20" fill="#0f172a" stroke="#f59e0b" strokeWidth="2" rx="3"/>
+        <text textAnchor="middle" y="3" fill="#f59e0b" fontSize="8">API</text>
+        <text textAnchor="middle" y="25" fill="#e2e8f0" fontSize="8">API Layer</text>
+      </g>
+      
+      <g transform="translate(50,220)">
+        <rect x="-15" y="-10" width="30" height="20" fill="#0f172a" stroke="#f59e0b" strokeWidth="2" rx="3"/>
+        <text textAnchor="middle" y="3" fill="#f59e0b" fontSize="8">LOG</text>
+        <text textAnchor="middle" y="25" fill="#e2e8f0" fontSize="8">Log Stream</text>
+      </g>
+    </g>
+    
+    {/* Processing Pipeline */}
+    <g transform="translate(200,150)">
+      <rect x="-30" y="-40" width="60" height="80" fill="#1e293b" stroke="#d97706" strokeWidth="2" rx="8"/>
+      
+      {/* Pipeline Stages */}
+      <rect x="-25" y="-30" width="50" height="15" fill="#f59e0b" opacity="0.3" rx="3"/>
+      <text textAnchor="middle" y="-20" fill="#e2e8f0" fontSize="7">Ingestion</text>
+      
+      <rect x="-25" y="-10" width="50" height="15" fill="#d97706" opacity="0.3" rx="3"/>
+      <text textAnchor="middle" y="0" fill="#e2e8f0" fontSize="7">Processing</text>
+      
+      <rect x="-25" y="10" width="50" height="15" fill="#f59e0b" opacity="0.3" rx="3"/>
+      <text textAnchor="middle" y="20" fill="#e2e8f0" fontSize="7">Analysis</text>
+      
+      <text textAnchor="middle" y="55" fill="#e2e8f0" fontSize="9">Data Pipeline</text>
+    </g>
+    
+    {/* Output Destinations */}
+    <g>
+      <g transform="translate(350,80)">
+        <rect x="-15" y="-10" width="30" height="20" fill="#0f172a" stroke="#10b981" strokeWidth="2" rx="3"/>
+        <text textAnchor="middle" y="3" fill="#10b981" fontSize="8">UI</text>
+        <text textAnchor="middle" y="25" fill="#e2e8f0" fontSize="8">Dashboard</text>
+      </g>
+      
+      <g transform="translate(350,150)">
+        <rect x="-15" y="-10" width="30" height="20" fill="#0f172a" stroke="#10b981" strokeWidth="2" rx="3"/>
+        <text textAnchor="middle" y="3" fill="#10b981" fontSize="8">ML</text>
+        <text textAnchor="middle" y="25" fill="#e2e8f0" fontSize="8">ML Model</text>
+      </g>
+      
+      <g transform="translate(350,220)">
+        <rect x="-15" y="-10" width="30" height="20" fill="#0f172a" stroke="#10b981" strokeWidth="2" rx="3"/>
+        <text textAnchor="middle" y="3" fill="#10b981" fontSize="8">ALT</text>
+        <text textAnchor="middle" y="25" fill="#e2e8f0" fontSize="8">Alerts</text>
+      </g>
+    </g>
+    
+    {/* Data Flow Arrows */}
+    <g>
+      <path d="M65,80 Q130,80 170,130" fill="none" stroke="#f59e0b" strokeWidth="2" markerEnd="url(#dataArrow)">
+        <animate attributeName="stroke-dasharray" values="0,100;10,90;0,100" dur="2s" repeatCount="indefinite"/>
+      </path>
+      <path d="M65,150 L170,150" fill="none" stroke="#f59e0b" strokeWidth="2" markerEnd="url(#dataArrow)">
+        <animate attributeName="stroke-dasharray" values="0,100;10,90;0,100" dur="2.5s" repeatCount="indefinite"/>
+      </path>
+      <path d="M65,220 Q130,220 170,170" fill="none" stroke="#f59e0b" strokeWidth="2" markerEnd="url(#dataArrow)">
+        <animate attributeName="stroke-dasharray" values="0,100;10,90;0,100" dur="3s" repeatCount="indefinite"/>
+      </path>
+      
+      <path d="M230,130 Q295,80 335,80" fill="none" stroke="#10b981" strokeWidth="2" markerEnd="url(#outputArrow)">
+        <animate attributeName="stroke-dasharray" values="0,100;10,90;0,100" dur="2.2s" repeatCount="indefinite"/>
+      </path>
+      <path d="M230,150 L335,150" fill="none" stroke="#10b981" strokeWidth="2" markerEnd="url(#outputArrow)">
+        <animate attributeName="stroke-dasharray" values="0,100;10,90;0,100" dur="2.7s" repeatCount="indefinite"/>
+      </path>
+      <path d="M230,170 Q295,220 335,220" fill="none" stroke="#10b981" strokeWidth="2" markerEnd="url(#outputArrow)">
+        <animate attributeName="stroke-dasharray" values="0,100;10,90;0,100" dur="3.2s" repeatCount="indefinite"/>
+      </path>
+    </g>
+    
+    {/* Arrow Markers */}
+    <defs>
+      <marker id="dataArrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+        <polygon points="0,0 0,6 9,3" fill="#f59e0b"/>
+      </marker>
+      <marker id="outputArrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+        <polygon points="0,0 0,6 9,3" fill="#10b981"/>
+      </marker>
+    </defs>
+    
+    {/* Performance Metrics */}
+    <g transform="translate(200,50)">
+      <rect x="-40" y="-15" width="80" height="20" fill="#0f172a" stroke="#374151" rx="3"/>
+      <text textAnchor="middle" y="-2" fill="#f59e0b" fontSize="8">Processing: 1.2M events/sec</text>
+    </g>
+  </svg>
+);
+
 export const MCPServerGraphic = () => (
   <svg viewBox="0 0 400 300" className="w-full h-full">
     <defs>
