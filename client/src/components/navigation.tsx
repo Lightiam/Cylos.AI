@@ -64,10 +64,17 @@ export default function Navigation() {
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-4">
             <Button 
-              onClick={() => scrollToSection('demo')}
-              className="bg-gradient-to-r from-sky-500 to-cyan-500 text-white hover:shadow-lg hover:shadow-sky-500/25 transition-all duration-300"
+              variant="outline" 
+              className="border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-slate-900"
+              onClick={() => window.location.href = '/login'}
             >
-              Request Demo
+              Sign In
+            </Button>
+            <Button 
+              className="bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-600 hover:to-cyan-600 text-white"
+              onClick={() => window.location.href = '/signup'}
+            >
+              Get Started
             </Button>
           </div>
 
@@ -119,12 +126,19 @@ export default function Navigation() {
             >
               Contact
             </button>
-            <div className="px-3 py-2">
+            <div className="px-3 py-2 space-y-2">
               <Button 
-                onClick={() => scrollToSection('demo')}
+                variant="outline"
+                onClick={() => window.location.href = '/login'}
+                className="w-full border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-slate-900"
+              >
+                Sign In
+              </Button>
+              <Button 
+                onClick={() => window.location.href = '/signup'}
                 className="w-full bg-gradient-to-r from-sky-500 to-cyan-500 text-white"
               >
-                Request Demo
+                Get Started
               </Button>
             </div>
           </div>
