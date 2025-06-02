@@ -33,6 +33,10 @@ export const insertUserSchema = createInsertSchema(users).omit({
 
 export const signupSchema = insertUserSchema.extend({
   confirmPassword: z.string().min(8, "Password must be at least 8 characters"),
+  firstName: z.string().optional(),
+  lastName: z.string().optional(),
+  company: z.string().optional(),
+  role: z.string().optional(),
 }).refine((data) => data.password === data.confirmPassword, {
   message: "Passwords don't match",
   path: ["confirmPassword"],
