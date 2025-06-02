@@ -37,13 +37,13 @@ export default function HeroSection() {
           >
             <h1 className="text-5xl lg:text-6xl font-bold leading-tight mb-6">
               <span className="bg-gradient-to-r from-sky-500 via-cyan-500 to-teal-500 bg-clip-text text-transparent">
-                Cylos AI Platform
+                Cylos AI Security
               </span>
               <br />
-              <span className="text-slate-50">Intelligent AI Agents</span>
+              <span className="text-slate-50">Intelligent Cybersecurity</span>
             </h1>
             <p className="text-xl text-slate-300 mb-8 leading-relaxed">
-              Deploy intelligent AI agents powered by advanced LLMs and MCP protocols. Autonomous monitoring, intelligent decision-making, and seamless integration across cloud, on-premises, and browser environments with cutting-edge AI capabilities.
+              Advanced cybersecurity platform powered by AI agents and LLM intelligence. Autonomous threat detection, intelligent incident response, and seamless security monitoring across cloud, on-premises, and browser environments with cutting-edge AI capabilities.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
               <Button 

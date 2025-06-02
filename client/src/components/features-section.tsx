@@ -5,41 +5,41 @@ import { ThreatDetectionGraphic, DashboardGraphic, BrowserPluginGraphic, RedTeam
 const features = [
   {
     icon: Lightbulb,
-    title: "Multi-LLM Integration",
-    description: "Connect to multiple AI providers including OpenAI, Anthropic, Groq, Cohere, and Google AI. Switch between models seamlessly for optimal performance.",
-    features: ["OpenAI GPT-4", "Anthropic Claude", "Groq Lightning", "Google Gemini"],
+    title: "AI-Powered Threat Detection",
+    description: "Advanced threat detection using multiple LLM providers including OpenAI, Anthropic, and Groq for intelligent security analysis and pattern recognition.",
+    features: ["Real-time Analysis", "Pattern Recognition", "Behavioral Detection", "Anomaly Identification"],
     gradient: "from-sky-500 to-cyan-500",
     graphic: ThreatDetectionGraphic
   },
   {
     icon: BarChart3,
-    title: "AI Chat Interface",
-    description: "Interactive chat interface with real-time AI responses, provider selection, and conversation history. Built for seamless AI interaction.",
-    features: ["Real-Time Chat", "Provider Switching", "Conversation History"],
+    title: "Security Dashboard",
+    description: "Real-time security monitoring interface with AI-enhanced analytics, threat visualization, and intelligent incident management.",
+    features: ["Real-Time Monitoring", "Threat Analytics", "Incident Response", "Security Metrics"],
     gradient: "from-cyan-500 to-teal-500",
     graphic: DashboardGraphic
   },
   {
     icon: Server,
-    title: "MCP Protocol Support",
-    description: "Full Model Context Protocol integration for connecting to MCP servers, executing tools, and accessing resources across distributed AI systems.",
-    features: ["Server Management", "Tool Execution", "Resource Access"],
+    title: "MCP Security Integration",
+    description: "Model Context Protocol integration for distributed security operations, connecting security tools, and coordinating threat response across systems.",
+    features: ["Security Orchestration", "Tool Integration", "Threat Coordination"],
     gradient: "from-teal-500 to-sky-500",
     graphic: MCPServerGraphic
   },
   {
     icon: Globe,
-    title: "Intelligent Agents",
-    description: "Deploy autonomous AI agents that can reason, plan, and execute tasks across different environments with advanced decision-making capabilities.",
-    features: ["Autonomous Operation", "Multi-Environment", "Smart Decision Making"],
+    title: "Security Agents",
+    description: "Deploy autonomous security agents that can detect, analyze, and respond to threats across different environments with intelligent decision-making.",
+    features: ["Autonomous Response", "Multi-Environment", "Threat Intelligence"],
     gradient: "from-purple-500 to-sky-500",
     graphic: BrowserPluginGraphic
   },
   {
     icon: Shield,
-    title: "Enterprise Ready",
-    description: "Production-ready platform with robust security, scalability, and monitoring. Built for enterprise deployment with comprehensive management tools.",
-    features: ["Security Controls", "Scalable Architecture", "Monitoring & Analytics"],
+    title: "Enterprise Security",
+    description: "Production-ready cybersecurity platform with advanced threat protection, compliance monitoring, and enterprise-grade security controls.",
+    features: ["Advanced Protection", "Compliance Monitoring", "Enterprise Controls"],
     gradient: "from-red-500 to-sky-500",
     graphic: RedTeamGraphic,
     isWide: true
@@ -59,11 +59,11 @@ export default function FeaturesSection() {
         >
           <h2 className="text-4xl font-bold mb-4">
             <span className="bg-gradient-to-r from-sky-500 to-cyan-500 bg-clip-text text-transparent">
-              Powerful AI Platform Features
+              Advanced Cybersecurity Features
             </span>
           </h2>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-            Advanced LLM integration, MCP protocol support, and intelligent agent deployment for next-generation AI applications
+            AI-powered threat detection, LLM-enhanced security analysis, and intelligent agent deployment for next-generation cybersecurity protection
           </p>
         </motion.div>
 
