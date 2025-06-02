@@ -1,45 +1,46 @@
 import { motion } from "framer-motion";
 import { Lightbulb, BarChart3, Server, Globe, Shield } from "lucide-react";
 import { ThreatDetectionGraphic, DashboardGraphic, BrowserPluginGraphic, RedTeamGraphic, MCPServerGraphic } from "./security-graphics";
+import { ThreatDetectionPulse, SecurityDashboardMetrics, MCPConnectionFlow, NetworkConnectionAnimation } from "./cybersecurity-animations";
 
 const features = [
   {
     icon: Lightbulb,
-    title: "Agentic AI Engine",
-    description: "Autonomous AI agents that plan, reason, and execute security tasks without human intervention. Continuously learns and adapts to new threats.",
-    features: ["Tool Integration", "Continuous Learning", "Autonomous Operation"],
+    title: "AI-Powered Threat Detection",
+    description: "Advanced threat detection using multiple LLM providers including OpenAI, Anthropic, and Groq for intelligent security analysis and pattern recognition.",
+    features: ["Real-time Analysis", "Pattern Recognition", "Behavioral Detection", "Anomaly Identification"],
     gradient: "from-sky-500 to-cyan-500",
-    graphic: ThreatDetectionGraphic
+    graphic: ThreatDetectionPulse
   },
   {
     icon: BarChart3,
-    title: "Alert Dashboard",
-    description: "Real-time monitoring interface with customizable views, historical analysis, and role-based access control for security teams.",
-    features: ["Real-Time Monitoring", "Historical Analysis", "Customizable Views"],
+    title: "Security Dashboard",
+    description: "Real-time security monitoring interface with AI-enhanced analytics, threat visualization, and intelligent incident management.",
+    features: ["Real-Time Monitoring", "Threat Analytics", "Incident Response", "Security Metrics"],
     gradient: "from-cyan-500 to-teal-500",
-    graphic: DashboardGraphic
+    graphic: SecurityDashboardMetrics
   },
   {
     icon: Server,
-    title: "MCP Server",
-    description: "Centralized management and control plane for all agentic AI instances. Handles policy distribution and centralized logging.",
-    features: ["Centralized Management", "Policy Enforcement", "Logging & Reporting"],
+    title: "MCP Security Integration",
+    description: "Model Context Protocol integration for distributed security operations, connecting security tools, and coordinating threat response across systems.",
+    features: ["Security Orchestration", "Tool Integration", "Threat Coordination"],
     gradient: "from-teal-500 to-sky-500",
-    graphic: MCPServerGraphic
+    graphic: MCPConnectionFlow
   },
   {
     icon: Globe,
-    title: "Browser Plugin",
-    description: "Browser-level monitoring for Chrome, Firefox, and Edge. Detects phishing, malicious scripts, and provides real-time user feedback.",
-    features: ["Browser Integration", "Threat Detection", "Real-Time Feedback"],
+    title: "Security Agents",
+    description: "Deploy autonomous security agents that can detect, analyze, and respond to threats across different environments with intelligent decision-making.",
+    features: ["Autonomous Response", "Multi-Environment", "Threat Intelligence"],
     gradient: "from-purple-500 to-sky-500",
-    graphic: BrowserPluginGraphic
+    graphic: NetworkConnectionAnimation
   },
   {
     icon: Shield,
-    title: "Red Teaming Integration",
-    description: "Quarterly adversarial simulations that continuously validate security controls through automated testing of 12 critical threat vectors.",
-    features: ["Agent Hijacking Tests", "Memory Poisoning Detection", "Multi-Agent Exploitation"],
+    title: "Enterprise Security",
+    description: "Production-ready cybersecurity platform with advanced threat protection, compliance monitoring, and enterprise-grade security controls.",
+    features: ["Advanced Protection", "Compliance Monitoring", "Enterprise Controls"],
     gradient: "from-red-500 to-sky-500",
     graphic: RedTeamGraphic,
     isWide: true
@@ -59,11 +60,11 @@ export default function FeaturesSection() {
         >
           <h2 className="text-4xl font-bold mb-4">
             <span className="bg-gradient-to-r from-sky-500 to-cyan-500 bg-clip-text text-transparent">
-              Five Core Components
+              Advanced Cybersecurity Features
             </span>
           </h2>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-            Comprehensive security coverage through autonomous AI agents, centralized management, and continuous validation
+            AI-powered threat detection, LLM-enhanced security analysis, and intelligent agent deployment for next-generation cybersecurity protection
           </p>
         </motion.div>
 
