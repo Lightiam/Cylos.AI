@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { CheckCircle } from "lucide-react";
+import { NetworkConnectionAnimation, FloatingSecurityBadges } from "./cybersecurity-animations";
 
 export default function HeroSection() {
   const scrollToDemo = () => {
@@ -37,13 +38,13 @@ export default function HeroSection() {
           >
             <h1 className="text-5xl lg:text-6xl font-bold leading-tight mb-6">
               <span className="bg-gradient-to-r from-sky-500 via-cyan-500 to-teal-500 bg-clip-text text-transparent">
-                Autonomous AI Security
+                Cylos AI Security
               </span>
               <br />
-              <span className="text-slate-50">That Never Sleeps</span>
+              <span className="text-slate-50">Intelligent Cybersecurity</span>
             </h1>
             <p className="text-xl text-slate-300 mb-8 leading-relaxed">
-              Deploy intelligent agents that autonomously monitor, detect, and respond to security threats across your entire infrastructure. Cloud, on-premises, and browser-level protection with integrated red teaming validation.
+              Advanced cybersecurity platform powered by AI agents and LLM intelligence. Autonomous threat detection, intelligent incident response, and seamless security monitoring across cloud, on-premises, and browser environments with cutting-edge AI capabilities.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
               <Button 
@@ -83,13 +84,16 @@ export default function HeroSection() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <motion.img
-              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600"
-              alt="Cybersecurity dashboard with monitoring interfaces"
-              className="rounded-2xl shadow-2xl shadow-sky-500/20 w-full"
-              animate={{ y: [-10, 10, -10] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            />
+            <div className="bg-slate-800/80 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 shadow-2xl shadow-sky-500/20">
+              <div className="mb-6">
+                <h3 className="text-lg font-semibold text-cyan-400 mb-4">Live Security Network</h3>
+                <NetworkConnectionAnimation />
+              </div>
+              <div className="border-t border-slate-700 pt-6">
+                <h4 className="text-sm font-medium text-slate-300 mb-3">Security Compliance</h4>
+                <FloatingSecurityBadges />
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
