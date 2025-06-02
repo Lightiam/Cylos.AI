@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <title>Agentic AI Security System - Enterprise Cybersecurity Platform</title>
+    <meta name="description" content="Deploy intelligent agents that autonomously monitor, detect, and respond to security threats across your entire infrastructure. Cloud, on-premises, and browser-level protection with integrated red teaming validation." />
+    
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="Agentic AI Security System - Enterprise Cybersecurity Platform" />
+    <meta property="og:description" content="Autonomous AI security that never sleeps. Protecting enterprises from evolving cyber threats with real-time threat detection and response." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="/" />
+    
+    <!-- Additional SEO meta tags -->
+    <meta name="keywords" content="AI security, autonomous security, cybersecurity, threat detection, enterprise security, security monitoring, red teaming" />
+    <meta name="author" content="AgenticAI Security" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Favicon and theme -->
+    <meta name="theme-color" content="#0ea5e9" />
+    
+    <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    
+    <style>
+      /* Prevent flash of unstyled content */
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      }
+      
+      /* Loading screen */
+      .loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease-out;
+      }
+      
+      .loading-spinner {
+        width: 40px;
+        height: 40px;
+        border: 3px solid rgba(14, 165, 233, 0.3);
+        border-top: 3px solid #0ea5e9;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Loading screen -->
+    <div class="loading-screen" id="loading-screen">
+      <div class="loading-spinner"></div>
+    </div>
+    
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Hide loading screen when page is loaded -->
+    <script>
+      window.addEventListener('load', function() {
+        const loadingScreen = document.getElementById('loading-screen');
+        if (loadingScreen) {
+          loadingScreen.style.opacity = '0';
+          setTimeout(() => {
+            loadingScreen.style.display = 'none';
+          }, 500);
+        }
+      });
+    </script>
+    
+    <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
+    <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
+  </body>
+</html>
