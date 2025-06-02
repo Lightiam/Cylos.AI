@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Lock, Shield, FileCheck, Award } from "lucide-react";
+import { ThreatDetectionGraphic } from "./security-graphics";
 
 const securityFeatures = [
   {
@@ -91,11 +92,9 @@ export default function SecuritySection() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <img
-              src="https://images.unsplash.com/photo-1563206767-5b18f218e8de?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400"
-              alt="Advanced security monitoring center with threat intelligence displays"
-              className="rounded-2xl shadow-2xl shadow-sky-500/20 w-full"
-            />
+            <div className="bg-slate-900/50 rounded-2xl border border-slate-700 p-6 shadow-2xl shadow-sky-500/20 h-96">
+              <ThreatDetectionGraphic />
+            </div>
           </motion.div>
         </div>
       </div>

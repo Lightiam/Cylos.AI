@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Lightbulb, BarChart3, Server, Globe, Shield } from "lucide-react";
+import { ThreatDetectionGraphic, DashboardGraphic, BrowserPluginGraphic, RedTeamGraphic, MCPServerGraphic } from "./security-graphics";
 
 const features = [
   {
@@ -7,28 +8,32 @@ const features = [
     title: "Agentic AI Engine",
     description: "Autonomous AI agents that plan, reason, and execute security tasks without human intervention. Continuously learns and adapts to new threats.",
     features: ["Tool Integration", "Continuous Learning", "Autonomous Operation"],
-    gradient: "from-sky-500 to-cyan-500"
+    gradient: "from-sky-500 to-cyan-500",
+    graphic: ThreatDetectionGraphic
   },
   {
     icon: BarChart3,
     title: "Alert Dashboard",
     description: "Real-time monitoring interface with customizable views, historical analysis, and role-based access control for security teams.",
     features: ["Real-Time Monitoring", "Historical Analysis", "Customizable Views"],
-    gradient: "from-cyan-500 to-teal-500"
+    gradient: "from-cyan-500 to-teal-500",
+    graphic: DashboardGraphic
   },
   {
     icon: Server,
     title: "MCP Server",
     description: "Centralized management and control plane for all agentic AI instances. Handles policy distribution and centralized logging.",
     features: ["Centralized Management", "Policy Enforcement", "Logging & Reporting"],
-    gradient: "from-teal-500 to-sky-500"
+    gradient: "from-teal-500 to-sky-500",
+    graphic: MCPServerGraphic
   },
   {
     icon: Globe,
     title: "Browser Plugin",
     description: "Browser-level monitoring for Chrome, Firefox, and Edge. Detects phishing, malicious scripts, and provides real-time user feedback.",
     features: ["Browser Integration", "Threat Detection", "Real-Time Feedback"],
-    gradient: "from-purple-500 to-sky-500"
+    gradient: "from-purple-500 to-sky-500",
+    graphic: BrowserPluginGraphic
   },
   {
     icon: Shield,
@@ -36,6 +41,7 @@ const features = [
     description: "Quarterly adversarial simulations that continuously validate security controls through automated testing of 12 critical threat vectors.",
     features: ["Agent Hijacking Tests", "Memory Poisoning Detection", "Multi-Agent Exploitation"],
     gradient: "from-red-500 to-sky-500",
+    graphic: RedTeamGraphic,
     isWide: true
   }
 ];
@@ -96,16 +102,15 @@ export default function FeaturesSection() {
                         ))}
                       </ul>
                     </div>
-                    <div>
-                      <img
-                        src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=250"
-                        alt="Security testing dashboard with threat simulation"
-                        className="rounded-lg shadow-lg w-full h-auto"
-                      />
+                    <div className="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
+                      <feature.graphic />
                     </div>
                   </div>
                 ) : (
                   <>
+                    <div className="bg-slate-900/50 rounded-lg p-4 mb-6 border border-slate-700 h-48">
+                      <feature.graphic />
+                    </div>
                     <p className="text-slate-300 mb-4">{feature.description}</p>
                     <ul className="space-y-2 text-sm text-slate-400">
                       {feature.features.map((item) => (
