@@ -1,4 +1,6 @@
 import { users, demoRequests, type User, type InsertUser, type DemoRequest, type InsertDemoRequest } from "@shared/schema";
+import { db } from "./db";
+import { eq } from "drizzle-orm";
 
 export interface IStorage {
   getUser(id: number): Promise<User | undefined>;
@@ -8,52 +10,43 @@ export interface IStorage {
   getDemoRequests(): Promise<DemoRequest[]>;
 }
 
-export class MemStorage implements IStorage {
-  private users: Map<number, User>;
-  private demoRequests: Map<number, DemoRequest>;
-  private currentUserId: number;
-  private currentDemoRequestId: number;
-
-  constructor() {
-    this.users = new Map();
-    this.demoRequests = new Map();
-    this.currentUserId = 1;
-    this.currentDemoRequestId = 1;
-  }
-
+export class DatabaseStorage implements IStorage {
   async getUser(id: number): Promise<User | undefined> {
-    return this.users.get(id);
+    const [user] = await db.select().from(users).where(eq(users.id, id));
+    return user || undefined;
   }
 
   async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
-    );
+    const [user] = await db.select().from(users).where(eq(users.username, username));
+    return user || undefined;
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {
-    const id = this.currentUserId++;
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
+    const [user] = await db
+      .insert(users)
+      .values(insertUser)
+      .returning();
     return user;
   }
 
   async createDemoRequest(insertDemoRequest: InsertDemoRequest): Promise<DemoRequest> {
-    const id = this.currentDemoRequestId++;
-    const demoRequest: DemoRequest = {
-      ...insertDemoRequest,
-      id,
-      createdAt: new Date(),
-    };
-    this.demoRequests.set(id, demoRequest);
+    const [demoRequest] = await db
+      .insert(demoRequests)
+      .values({
+        ...insertDemoRequest,
+        message: insertDemoRequest.message || null
+      })
+      .returning();
     return demoRequest;
   }
 
   async getDemoRequests(): Promise<DemoRequest[]> {
-    return Array.from(this.demoRequests.values()).sort(
-      (a, b) => b.createdAt.getTime() - a.createdAt.getTime()
-    );
+    const requests = await db
+      .select()
+      .from(demoRequests)
+      .orderBy(demoRequests.createdAt);
+    return requests.reverse();
   }
 }
 
-export const storage = new MemStorage();
+export const storage = new DatabaseStorage();
