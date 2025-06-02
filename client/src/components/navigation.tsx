@@ -20,7 +20,7 @@ export default function Navigation() {
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <span className="text-2xl font-bold bg-gradient-to-r from-sky-500 to-cyan-500 bg-clip-text text-transparent">
-                AgenticAI Security
+                Cylos AI
               </span>
             </div>
           </div>

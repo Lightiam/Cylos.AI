@@ -5,41 +5,41 @@ import { ThreatDetectionGraphic, DashboardGraphic, BrowserPluginGraphic, RedTeam
 const features = [
   {
     icon: Lightbulb,
-    title: "Agentic AI Engine",
-    description: "Autonomous AI agents that plan, reason, and execute security tasks without human intervention. Continuously learns and adapts to new threats.",
-    features: ["Tool Integration", "Continuous Learning", "Autonomous Operation"],
+    title: "Multi-LLM Integration",
+    description: "Connect to multiple AI providers including OpenAI, Anthropic, Groq, Cohere, and Google AI. Switch between models seamlessly for optimal performance.",
+    features: ["OpenAI GPT-4", "Anthropic Claude", "Groq Lightning", "Google Gemini"],
     gradient: "from-sky-500 to-cyan-500",
     graphic: ThreatDetectionGraphic
   },
   {
     icon: BarChart3,
-    title: "Alert Dashboard",
-    description: "Real-time monitoring interface with customizable views, historical analysis, and role-based access control for security teams.",
-    features: ["Real-Time Monitoring", "Historical Analysis", "Customizable Views"],
+    title: "AI Chat Interface",
+    description: "Interactive chat interface with real-time AI responses, provider selection, and conversation history. Built for seamless AI interaction.",
+    features: ["Real-Time Chat", "Provider Switching", "Conversation History"],
     gradient: "from-cyan-500 to-teal-500",
     graphic: DashboardGraphic
   },
   {
     icon: Server,
-    title: "MCP Server",
-    description: "Centralized management and control plane for all agentic AI instances. Handles policy distribution and centralized logging.",
-    features: ["Centralized Management", "Policy Enforcement", "Logging & Reporting"],
+    title: "MCP Protocol Support",
+    description: "Full Model Context Protocol integration for connecting to MCP servers, executing tools, and accessing resources across distributed AI systems.",
+    features: ["Server Management", "Tool Execution", "Resource Access"],
     gradient: "from-teal-500 to-sky-500",
     graphic: MCPServerGraphic
   },
   {
     icon: Globe,
-    title: "Browser Plugin",
-    description: "Browser-level monitoring for Chrome, Firefox, and Edge. Detects phishing, malicious scripts, and provides real-time user feedback.",
-    features: ["Browser Integration", "Threat Detection", "Real-Time Feedback"],
+    title: "Intelligent Agents",
+    description: "Deploy autonomous AI agents that can reason, plan, and execute tasks across different environments with advanced decision-making capabilities.",
+    features: ["Autonomous Operation", "Multi-Environment", "Smart Decision Making"],
     gradient: "from-purple-500 to-sky-500",
     graphic: BrowserPluginGraphic
   },
   {
     icon: Shield,
-    title: "Red Teaming Integration",
-    description: "Quarterly adversarial simulations that continuously validate security controls through automated testing of 12 critical threat vectors.",
-    features: ["Agent Hijacking Tests", "Memory Poisoning Detection", "Multi-Agent Exploitation"],
+    title: "Enterprise Ready",
+    description: "Production-ready platform with robust security, scalability, and monitoring. Built for enterprise deployment with comprehensive management tools.",
+    features: ["Security Controls", "Scalable Architecture", "Monitoring & Analytics"],
     gradient: "from-red-500 to-sky-500",
     graphic: RedTeamGraphic,
     isWide: true
@@ -59,11 +59,11 @@ export default function FeaturesSection() {
         >
           <h2 className="text-4xl font-bold mb-4">
             <span className="bg-gradient-to-r from-sky-500 to-cyan-500 bg-clip-text text-transparent">
-              Five Core Components
+              Powerful AI Platform Features
             </span>
           </h2>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-            Comprehensive security coverage through autonomous AI agents, centralized management, and continuous validation
+            Advanced LLM integration, MCP protocol support, and intelligent agent deployment for next-generation AI applications
           </p>
         </motion.div>
 

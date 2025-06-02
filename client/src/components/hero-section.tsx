@@ -37,13 +37,13 @@ export default function HeroSection() {
           >
             <h1 className="text-5xl lg:text-6xl font-bold leading-tight mb-6">
               <span className="bg-gradient-to-r from-sky-500 via-cyan-500 to-teal-500 bg-clip-text text-transparent">
-                Autonomous AI Security
+                Cylos AI Platform
               </span>
               <br />
-              <span className="text-slate-50">That Never Sleeps</span>
+              <span className="text-slate-50">Intelligent AI Agents</span>
             </h1>
             <p className="text-xl text-slate-300 mb-8 leading-relaxed">
-              Deploy intelligent agents that autonomously monitor, detect, and respond to security threats across your entire infrastructure. Cloud, on-premises, and browser-level protection with integrated red teaming validation.
+              Deploy intelligent AI agents powered by advanced LLMs and MCP protocols. Autonomous monitoring, intelligent decision-making, and seamless integration across cloud, on-premises, and browser environments with cutting-edge AI capabilities.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
               <Button 
@@ -85,7 +85,7 @@ export default function HeroSection() {
           >
             <motion.img
               src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600"
-              alt="Cybersecurity dashboard with monitoring interfaces"
+              alt="Cylos AI dashboard with intelligent agent monitoring interfaces"
               className="rounded-2xl shadow-2xl shadow-sky-500/20 w-full"
               animate={{ y: [-10, 10, -10] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
