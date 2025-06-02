@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { CheckCircle } from "lucide-react";
+import { NetworkConnectionAnimation, FloatingSecurityBadges } from "./cybersecurity-animations";
 
 export default function HeroSection() {
   const scrollToDemo = () => {
@@ -83,13 +84,16 @@ export default function HeroSection() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <motion.img
-              src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
-              alt="Modern AI system architecture with network connections and data flows"
-              className="rounded-2xl shadow-2xl shadow-sky-500/20 w-full"
-              animate={{ y: [-10, 10, -10] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            />
+            <div className="bg-slate-800/80 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 shadow-2xl shadow-sky-500/20">
+              <div className="mb-6">
+                <h3 className="text-lg font-semibold text-cyan-400 mb-4">Live Security Network</h3>
+                <NetworkConnectionAnimation />
+              </div>
+              <div className="border-t border-slate-700 pt-6">
+                <h4 className="text-sm font-medium text-slate-300 mb-3">Security Compliance</h4>
+                <FloatingSecurityBadges />
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>

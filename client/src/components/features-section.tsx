@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Lightbulb, BarChart3, Server, Globe, Shield } from "lucide-react";
 import { ThreatDetectionGraphic, DashboardGraphic, BrowserPluginGraphic, RedTeamGraphic, MCPServerGraphic } from "./security-graphics";
+import { ThreatDetectionPulse, SecurityDashboardMetrics, MCPConnectionFlow, NetworkConnectionAnimation } from "./cybersecurity-animations";
 
 const features = [
   {
@@ -9,7 +10,7 @@ const features = [
     description: "Advanced threat detection using multiple LLM providers including OpenAI, Anthropic, and Groq for intelligent security analysis and pattern recognition.",
     features: ["Real-time Analysis", "Pattern Recognition", "Behavioral Detection", "Anomaly Identification"],
     gradient: "from-sky-500 to-cyan-500",
-    graphic: ThreatDetectionGraphic
+    graphic: ThreatDetectionPulse
   },
   {
     icon: BarChart3,
@@ -17,7 +18,7 @@ const features = [
     description: "Real-time security monitoring interface with AI-enhanced analytics, threat visualization, and intelligent incident management.",
     features: ["Real-Time Monitoring", "Threat Analytics", "Incident Response", "Security Metrics"],
     gradient: "from-cyan-500 to-teal-500",
-    graphic: DashboardGraphic
+    graphic: SecurityDashboardMetrics
   },
   {
     icon: Server,
@@ -25,7 +26,7 @@ const features = [
     description: "Model Context Protocol integration for distributed security operations, connecting security tools, and coordinating threat response across systems.",
     features: ["Security Orchestration", "Tool Integration", "Threat Coordination"],
     gradient: "from-teal-500 to-sky-500",
-    graphic: MCPServerGraphic
+    graphic: MCPConnectionFlow
   },
   {
     icon: Globe,
@@ -33,7 +34,7 @@ const features = [
     description: "Deploy autonomous security agents that can detect, analyze, and respond to threats across different environments with intelligent decision-making.",
     features: ["Autonomous Response", "Multi-Environment", "Threat Intelligence"],
     gradient: "from-purple-500 to-sky-500",
-    graphic: BrowserPluginGraphic
+    graphic: NetworkConnectionAnimation
   },
   {
     icon: Shield,
