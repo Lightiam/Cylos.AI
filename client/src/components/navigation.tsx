@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Shield, Activity, Search } from "lucide-react";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -35,16 +35,25 @@ export default function Navigation() {
                 Features
               </button>
               <button 
-                onClick={() => scrollToSection('demos')}
-                className="hover:text-sky-500 transition-colors duration-300"
+                onClick={() => window.location.href = '/dashboard'}
+                className="hover:text-sky-500 transition-colors duration-300 flex items-center gap-1"
               >
-                Demos
+                <Shield className="h-4 w-4" />
+                Dashboard
               </button>
               <button 
-                onClick={() => scrollToSection('portal')}
-                className="hover:text-sky-500 transition-colors duration-300"
+                onClick={() => window.location.href = '/threats'}
+                className="hover:text-sky-500 transition-colors duration-300 flex items-center gap-1"
               >
-                Portal
+                <Activity className="h-4 w-4" />
+                Threats
+              </button>
+              <button 
+                onClick={() => window.location.href = '/scans'}
+                className="hover:text-sky-500 transition-colors duration-300 flex items-center gap-1"
+              >
+                <Search className="h-4 w-4" />
+                Scans
               </button>
               <button 
                 onClick={() => scrollToSection('docs')}
@@ -103,16 +112,25 @@ export default function Navigation() {
               Features
             </button>
             <button
-              onClick={() => scrollToSection('demos')}
-              className="block px-3 py-2 text-slate-300 hover:text-sky-500 transition-colors duration-300"
+              onClick={() => window.location.href = '/dashboard'}
+              className="block px-3 py-2 text-slate-300 hover:text-sky-500 transition-colors duration-300 flex items-center gap-2"
             >
-              Demos
+              <Shield className="h-4 w-4" />
+              Dashboard
             </button>
             <button
-              onClick={() => scrollToSection('portal')}
-              className="block px-3 py-2 text-slate-300 hover:text-sky-500 transition-colors duration-300"
+              onClick={() => window.location.href = '/threats'}
+              className="block px-3 py-2 text-slate-300 hover:text-sky-500 transition-colors duration-300 flex items-center gap-2"
             >
-              Portal
+              <Activity className="h-4 w-4" />
+              Threats
+            </button>
+            <button
+              onClick={() => window.location.href = '/scans'}
+              className="block px-3 py-2 text-slate-300 hover:text-sky-500 transition-colors duration-300 flex items-center gap-2"
+            >
+              <Search className="h-4 w-4" />
+              Scans
             </button>
             <button
               onClick={() => scrollToSection('docs')}

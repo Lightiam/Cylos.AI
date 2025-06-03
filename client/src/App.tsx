@@ -7,6 +7,9 @@ import Home from "@/pages/home";
 import Login from "@/pages/login";
 import Signup from "@/pages/signup";
 import NotFound from "@/pages/not-found";
+import SecurityDashboard from "@/components/security-dashboard";
+import ThreatAnalysis from "@/components/threat-analysis";
+import SecurityScans from "@/components/security-scans";
 
 function Router() {
   return (
@@ -14,6 +17,9 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
+      <Route path="/dashboard" component={SecurityDashboard} />
+      <Route path="/threats" component={ThreatAnalysis} />
+      <Route path="/scans" component={SecurityScans} />
       <Route component={NotFound} />
     </Switch>
   );

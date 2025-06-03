@@ -114,4 +114,8 @@ export class AIServiceManager {
   getAvailableProviders(): string[] {
     return Array.from(this.providers.keys());
   }
+
+  hasProvider(providerName: string): boolean {
+    return this.providers.has(providerName);
+  }
 }

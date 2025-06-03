@@ -30,9 +30,11 @@ const documentationSections = [
     gradient: "from-blue-500 to-cyan-500",
     items: [
       { title: "Authentication", endpoint: "/api/auth", method: "POST", type: "API" },
-      { title: "Threat Detection", endpoint: "/api/threats", method: "GET", type: "API" },
-      { title: "Alert Management", endpoint: "/api/alerts", method: "GET", type: "API" },
-      { title: "Policy Configuration", endpoint: "/api/policies", method: "PUT", type: "API" }
+      { title: "Tenant Management", endpoint: "/api/tenants", method: "POST", type: "API" },
+      { title: "Threat Analysis", endpoint: "/api/threats/analyze", method: "POST", type: "API" },
+      { title: "Security Scanning", endpoint: "/api/scans/start", method: "POST", type: "API" },
+      { title: "Compliance Checking", endpoint: "/api/compliance/check", method: "POST", type: "API" },
+      { title: "Monitoring & Alerts", endpoint: "/api/tenants/{tenantId}/alerts", method: "GET", type: "API" }
     ]
   },
   {
@@ -77,19 +79,51 @@ const documentationSections = [
 ];
 
 const codeExamples = {
-  authentication: `curl -X POST https://api.cylos.dev/auth \\
+  authentication: `curl -X POST https://api.cylos.ai/login \\
   -H "Content-Type: application/json" \\
   -d '{
-    "email": "user@company.com",
+    "username": "user@company.com",
     "password": "your_password"
   }'`,
   
-  threatDetection: `curl -X GET https://api.cylos.dev/threats \\
-  -H "Authorization: Bearer YOUR_TOKEN" \\
-  -H "Content-Type: application/json"`,
+  tenantManagement: `curl -X POST https://api.cylos.ai/tenants \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "name": "Acme Corp Security",
+    "userId": 1,
+    "industry": "Technology",
+    "securityLevel": "enterprise"
+  }'`,
   
-  alertManagement: `curl -X GET https://api.cylos.dev/alerts \\
-  -H "Authorization: Bearer YOUR_TOKEN" \\
+  threatAnalysis: `curl -X POST https://api.cylos.ai/threats/analyze \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "text": "Suspicious email with malware attachment detected",
+    "tenant_id": 1,
+    "source": "email_scanner"
+  }'`,
+  
+  securityScanning: `curl -X POST https://api.cylos.ai/scans/start \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "scan_type": "vulnerability",
+    "tenant_id": 1,
+    "config": {
+      "targets": ["192.168.1.0/24"],
+      "depth": "deep",
+      "timeout": 3600
+    }
+  }'`,
+  
+  complianceChecking: `curl -X POST https://api.cylos.ai/compliance/check \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "framework": "SOC2",
+    "tenant_id": 1
+  }'`,
+  
+  alertManagement: `curl -X GET https://api.cylos.ai/tenants/1/alerts \\
+  -H "Content-Type: application/json" \\
   -G -d "severity=critical" -d "limit=10"`
 };
 
@@ -97,27 +131,58 @@ const sdkExamples = {
   javascript: `import { CylosAPI } from '@cylos/sdk';
 
 const client = new CylosAPI({
-  apiKey: 'your-api-key',
-  baseURL: 'https://api.cylos.dev'
+  sessionToken: 'your-session-token',
+  baseURL: 'https://api.cylos.ai'
 });
 
-// Get threat data
-const threats = await client.threats.list({
-  severity: 'critical',
-  limit: 10
+const analysis = await client.threats.analyze({
+  text: 'Suspicious email content',
+  tenant_id: 1,
+  source: 'email_scanner'
+});
+
+const scan = await client.scans.start({
+  scan_type: 'vulnerability',
+  tenant_id: 1,
+  config: {
+    targets: ['192.168.1.0/24'],
+    depth: 'deep'
+  }
+});
+
+const compliance = await client.compliance.check({
+  framework: 'SOC2',
+  tenant_id: 1
 });`,
 
   python: `from cylos import CylosAPI
 
 client = CylosAPI(
-    api_key="your-api-key",
-    base_url="https://api.cylos.dev"
+    session_token="your-session-token",
+    base_url="https://api.cylos.ai"
 )
 
-# Get threat data
-threats = client.threats.list(
-    severity="critical",
-    limit=10
+# Analyze text for threats
+analysis = client.threats.analyze(
+    text="Suspicious email content",
+    tenant_id=1,
+    source="email_scanner"
+)
+
+# Start security scan
+scan = client.scans.start(
+    scan_type="vulnerability",
+    tenant_id=1,
+    config={
+        "targets": ["192.168.1.0/24"],
+        "depth": "deep"
+    }
+)
+
+# Check compliance
+compliance = client.compliance.check(
+    framework="SOC2",
+    tenant_id=1
 )`
 };
 
@@ -126,50 +191,142 @@ export default function TechnicalDocs() {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeTab, setActiveTab] = useState("overview");
 
-  const ApiReference = () => (
-    <div className="space-y-6">
-      <div className="grid gap-6">
-        {documentationSections[0].items.map((item, index) => (
-          <Card key={index} className="bg-slate-800 border-slate-700">
-            <CardHeader>
-              <div className="flex items-center justify-between">
-                <CardTitle className="text-lg">{item.title}</CardTitle>
-                <div className="flex items-center space-x-2">
-                  {'method' in item && (
-                    <Badge variant="outline" className="border-blue-500 text-blue-500">
-                      {item.method}
-                    </Badge>
-                  )}
-                  {'endpoint' in item && (
-                    <code className="text-sm bg-slate-700 px-2 py-1 rounded">
-                      {item.endpoint}
-                    </code>
-                  )}
+  const ApiReference = () => {
+    const getCodeExample = (title: string) => {
+      switch (title) {
+        case "Authentication":
+          return codeExamples.authentication;
+        case "Tenant Management":
+          return codeExamples.tenantManagement;
+        case "Threat Analysis":
+          return codeExamples.threatAnalysis;
+        case "Security Scanning":
+          return codeExamples.securityScanning;
+        case "Compliance Checking":
+          return codeExamples.complianceChecking;
+        case "Monitoring & Alerts":
+          return codeExamples.alertManagement;
+        default:
+          return codeExamples.authentication;
+      }
+    };
+
+    const getResponseExample = (title: string) => {
+      switch (title) {
+        case "Threat Analysis":
+          return `{
+  "success": true,
+  "analysis": {
+    "threatLevel": 0.75,
+    "categories": ["malware", "phishing"],
+    "confidence": 0.85,
+    "recommendations": [
+      "Implement email security filters",
+      "Deploy advanced endpoint protection"
+    ],
+    "severity": "high"
+  }
+}`;
+        case "Security Scanning":
+          return `{
+  "success": true,
+  "scan_id": 12345,
+  "status": "running"
+}`;
+        case "Compliance Checking":
+          return `{
+  "success": true,
+  "assessment": {
+    "framework": "SOC2",
+    "score": 85,
+    "status": "compliant",
+    "findings": [
+      {
+        "control": "CC6.1",
+        "status": "pass",
+        "description": "Access controls implemented"
+      }
+    ]
+  }
+}`;
+        case "Monitoring & Alerts":
+          return `{
+  "success": true,
+  "alerts": [
+    {
+      "id": 123,
+      "alert_type": "threat_level",
+      "severity": "high",
+      "message": "High threat level detected: 85.2%",
+      "status": "active",
+      "created_at": "2024-01-01T00:00:00Z"
+    }
+  ]
+}`;
+        default:
+          return `{
+  "success": true,
+  "message": "Operation completed successfully"
+}`;
+      }
+    };
+
+    return (
+      <div className="space-y-6">
+        <div className="grid gap-6">
+          {documentationSections[0].items.map((item, index) => (
+            <Card key={index} className="bg-slate-800 border-slate-700">
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <CardTitle className="text-lg">{item.title}</CardTitle>
+                  <div className="flex items-center space-x-2">
+                    {'method' in item && (
+                      <Badge variant="outline" className="border-blue-500 text-blue-500">
+                        {item.method}
+                      </Badge>
+                    )}
+                    {'endpoint' in item && (
+                      <code className="text-sm bg-slate-700 px-2 py-1 rounded">
+                        {item.endpoint}
+                      </code>
+                    )}
+                  </div>
                 </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="bg-slate-900 rounded-lg p-4 overflow-x-auto">
-                <pre className="text-sm text-green-400">
-                  <code>{codeExamples.authentication}</code>
-                </pre>
-              </div>
-              <div className="mt-4 flex space-x-2">
-                <Button size="sm" variant="outline">
-                  <ExternalLink className="w-4 h-4 mr-1" />
-                  Try in Postman
-                </Button>
-                <Button size="sm" variant="outline">
-                  <Download className="w-4 h-4 mr-1" />
-                  Download OpenAPI
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div>
+                  <h4 className="font-medium mb-2">Request Example:</h4>
+                  <div className="bg-slate-900 rounded-lg p-4 overflow-x-auto">
+                    <pre className="text-sm text-green-400">
+                      <code>{getCodeExample(item.title)}</code>
+                    </pre>
+                  </div>
+                </div>
+                <div>
+                  <h4 className="font-medium mb-2">Response Example:</h4>
+                  <div className="bg-slate-900 rounded-lg p-4 overflow-x-auto">
+                    <pre className="text-sm text-blue-400">
+                      <code>{getResponseExample(item.title)}</code>
+                    </pre>
+                  </div>
+                </div>
+                <div className="flex space-x-2">
+                  <Button size="sm" variant="outline">
+                    <ExternalLink className="w-4 h-4 mr-1" />
+                    Try in Postman
+                  </Button>
+                  <Button size="sm" variant="outline">
+                    <Download className="w-4 h-4 mr-1" />
+                    Download OpenAPI
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   const SDKDocumentation = () => (
     <div className="space-y-6">
@@ -395,11 +552,12 @@ export default function TechnicalDocs() {
                       </CardHeader>
                       <CardContent>
                         <ul className="space-y-2 text-sm text-slate-300">
-                          <li>• End-to-end encryption (AES-256)</li>
-                          <li>• OAuth 2.0 / JWT authentication</li>
-                          <li>• Role-based access control</li>
-                          <li>• API rate limiting</li>
-                          <li>• Audit logging and compliance</li>
+                          <li>• AI-powered threat detection</li>
+                          <li>• Multi-tenant security isolation</li>
+                          <li>• Real-time vulnerability scanning</li>
+                          <li>• Compliance framework support (SOC2, ISO27001, GDPR)</li>
+                          <li>• Session-based authentication</li>
+                          <li>• Comprehensive audit logging</li>
                         </ul>
                       </CardContent>
                     </Card>
